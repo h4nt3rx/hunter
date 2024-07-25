@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Basic Auth Login</title>
+    <title>POC - Authentication</title>
     <style>
         /* Modal styles */
         .modal {
@@ -70,9 +70,6 @@
 </head>
 <body>
 
-<h2>Trigger Basic Auth Popup</h2>
-<button onclick="showModal()">Show Login Popup</button>
-
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
@@ -103,6 +100,10 @@
         alert(username + ':' + password);
         closeModal();
     }
+
+    window.onload = function() {
+        showModal();
+    };
 </script>
 
 </body>
