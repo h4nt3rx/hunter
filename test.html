@@ -44,10 +44,11 @@
         }
 
         function setup() {
+            const target = xxxURLParam("target");
             document.body.addEventListener('click', launch);
             const message = document.createElement('div');
             message.id = 'message';
-            message.innerText = 'If the site did not automatically redirect to the value of xTargetParam, click anywhere in the white background';
+            message.innerText = `If the site did not automatically redirect to ${target}, click anywhere in the white background`;
             document.body.appendChild(message);
         }
 
