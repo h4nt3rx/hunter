@@ -10,6 +10,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        #message {
+            color: black;
+            font-size: 20px;
         }
     </style>
     <script>
@@ -39,6 +45,10 @@
 
         function setup() {
             document.body.addEventListener('click', launch);
+            const message = document.createElement('div');
+            message.id = 'message';
+            message.innerText = 'If the site did not automatically redirect to the value of xTargetParam, click anywhere in the white background';
+            document.body.appendChild(message);
         }
 
         window.onload = setup;
