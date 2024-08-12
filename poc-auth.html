@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="login-container">
-        <form class="login-form">
+        <form class="login-form" onsubmit="return handleLogin(event)">
             <h2>Login</h2>
             <div class="input-group">
                 <label for="username">Username</label>
@@ -21,5 +21,19 @@
             <button type="submit">Login</button>
         </form>
     </div>
+
+    <script>
+        function handleLogin(event) {
+            event.preventDefault(); // Prevent form from submitting
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (!username || !password) {
+                alert('Please insert username or password!');
+            } else {
+                alert(`username: ${username}\npassword: ${password}`);
+            }
+        }
+    </script>
 </body>
 </html>
