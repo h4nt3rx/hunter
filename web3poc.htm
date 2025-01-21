@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet Connect</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .wallet-connect-container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+
+        .wallet-connect-box h2 {
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .wallet-connect-box p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        #connectWalletButton {
+            background-color: #ff8c00;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        #connectWalletButton:hover {
+            background-color: #e67600;
+        }
+
+        #connectWalletButton img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .wallet-connect-box img.logo {
+            width: 50px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wallet-connect-container">
+        <div class="wallet-connect-box">
+            <img src="https://raw.githubusercontent.com/MetaMask/brand-resources/master/SVG/metamask-fox.svg" alt="MetaMask Logo" class="logo">
+            <h2>Connect Your Wallet</h2>
+            <p>To proceed, please connect your Web3 wallet.</p>
+            <button id="connectWalletButton">
+                <img src="https://raw.githubusercontent.com/MetaMask/brand-resources/master/SVG/metamask-fox.svg" alt="MetaMask Icon">
+                Connect Wallet
+            </button>
+        </div>
+    </div>
+
+    <script>
+        async function connectWallet() {
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    // Request accounts from the user
+                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    alert(`Wallet connected: ${accounts[0]}`);
+                } catch (error) {
+                    console.error(error);
+                    alert('Failed to connect wallet. Please try again.');
+                }
+            } else {
+                alert('No Ethereum wallet detected. Please install MetaMask or another Web3 wallet.');
+            }
+        }
+
+        document.getElementById('connectWalletButton').addEventListener('click', connectWallet);
+    </script>
+</body>
+</html>
