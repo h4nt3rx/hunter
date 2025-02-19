@@ -15,11 +15,13 @@
 
         #container {
             position: relative; /* Make this the reference for positioning the button */
-            text-align: center; /* Center the content inside the container */
+            text-align: center; /* Center-align contents inside the container */
         }
 
         #bg-image {
-            max-width: 20%; /* Make the image smaller */
+            max-width: 20%; /* Adjust the image size */
+            display: block; /* Ensures it respects centering within the container */
+            margin: 0 auto; /* Center the image horizontally */
         }
 
         #exploit-button {
@@ -78,7 +80,7 @@
     </script>
 </head>
 <body>
-    <div>
+    <div id="container">
         <img id="bg-image" src="https://bugbountyhunter.xyz/images/hlabs-black-logo.png">
         <button id="exploit-button" onclick="launch()">Exploit</button>
     </div>
