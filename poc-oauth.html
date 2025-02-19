@@ -25,18 +25,18 @@
     </style>
 <script>
   // Get the URL parameter
-    function getParameterByName(name, targetURL) {
-        if (!targetURL) targetURL = window.location.href;
+    function getParameterByName(name, target) {
+        if (!target) target = window.location.href;
         name = name.replace(/[\[\]]/g, "\\$&");
         var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-            results = regex.exec(targetURL);
+            results = regex.exec(target);
         if (!results) return null;
         if (!results[2]) return '';
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
 let foo;
     let baselength;
-    var urlParam = getParameterByName('targetURL');
+    var urlParam = getParameterByName('target');
     function init() {
         baselength = foo.length;
         console.log("Setting base to " + baselength);       
