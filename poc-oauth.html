@@ -10,19 +10,21 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            text-align: center;
             font-family: Arial, sans-serif;
-            position: relative;
+        }
+
+        #container {
+            position: relative; /* Make this the reference for positioning the button */
+            text-align: center; /* Center the content inside the container */
         }
 
         #bg-image {
-            max-width: 20%; /* Makes the image smaller and centered */
-            position: relative;
+            max-width: 20%; /* Make the image smaller */
         }
 
         #exploit-button {
             position: absolute;
-            bottom: 20px; /* Position the button at the bottom of the image */
+            bottom: -30px; /* Position the button below the image */
             left: 50%;
             transform: translateX(-50%);
             padding: 10px 20px;
